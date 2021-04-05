@@ -5,6 +5,7 @@ import { Home, SearchPosts } from '../Screens';
 import React from "react"
 import {View,Image,Text} from "react-native"
 import colors from '../styles/colors';
+import DrawerRoutes from './DrawerRoutes';
 
 
 const Tab = createBottomTabNavigator();
@@ -56,7 +57,7 @@ export default function TabRoutes() {
           ),
       }}
       />
-      {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
+     
     </Tab.Navigator>
   );
 }

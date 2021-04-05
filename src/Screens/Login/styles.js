@@ -7,7 +7,8 @@ import commonStyles from '../../styles/commonStyles';
 export default StyleSheet.create({
     mainView:{
         flex:1,
-        padding:20
+        padding:20,
+        
     },
    appLogo:{
       alignSelf:'center',

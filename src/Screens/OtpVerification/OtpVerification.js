@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import {View,Text,Image,TextInput} from 'react-native';
+import {View,Text,Image,TextInput, StatusBar} from 'react-native';
 import SimpleBtn from '../../Component/SimpleBtn';
 import commonStyles from '../../styles/commonStyles';
 import styles from './styles';
@@ -9,6 +9,8 @@ import Loader from '../../Component/Loader';
 import actions from '../../redux/actions';
 import { showMessage } from 'react-native-flash-message';
 import navigationStrings from '../../constants/navigationStrings';
+import WrapperContainer from '../../Component/WrapperContainer';
+import colors from '../../styles/colors';
 
 export default class OtpVerification extends Component{
     constructor(props){
@@ -61,6 +63,8 @@ export default class OtpVerification extends Component{
     render(){
         const{isLoading}=this.state;
         return(
+            <WrapperContainer>
+                
             <View style={styles.mainView}>
             <Image source={imagePath.appLogo} style={styles.appLogo}/>
             <Text style={styles.verification_text}>Verification</Text>
@@ -70,6 +74,7 @@ export default class OtpVerification extends Component{
              <SimpleBtn simpleBtn_Text={strings.VERIFY} onPresSimpleBtn={this._onClickSimpleBtn}/>
                <Loader isLoading={isLoading}/>
          </View>
+         </WrapperContainer>
         )
     }
 }

@@ -18,6 +18,7 @@ import {
     GoogleSigninButton,
     statusCodes,
   } from '@react-native-google-signin/google-signin';
+import WrapperContainer from '../../Component/WrapperContainer';
   GoogleSignin.configure();
 
  export default class Login extends Component{
@@ -119,8 +120,9 @@ import {
      render(){
          const{isLoading}=this.state;
          return(
-            <View style={styles.mainView}>
-            <StatusBar backgroundColor={colors.themeColor} />
+             <WrapperContainer>
+            <View style={styles.mainView} >
+           
 
             <Image source={imagePath.appLogo} style={styles.appLogo} />
             <Text style={styles.login_text}>Login</Text>
@@ -136,7 +138,7 @@ import {
     color={GoogleSigninButton.Color.Light}
     onPress={this.signIn}
     disabled={this.state.isSigninInProgress} />
-    
+
     <LoginButton
           onLoginFinished={
             (error, result) => {
@@ -155,6 +157,7 @@ import {
           }
           onLogoutFinished={() => console.log("logout.")}/>
         </View>
+        </WrapperContainer>
          )
      }
  }

@@ -7,12 +7,14 @@ import colors from "../styles/colors";
 
  export default function Header(props){
 
-    const{headerText}=props;
+    const{headerText,onClickMenuIcon}=props;
    
     return(
             
         <View style={styles.headerView}>
+        <TouchableOpacity onPress={onClickMenuIcon}>
         <Image source={imagePath.menuIcon} style={styles.menuIcon}/>
+        </TouchableOpacity>
         <Text style={styles.headerText}>{headerText}</Text>
       
         

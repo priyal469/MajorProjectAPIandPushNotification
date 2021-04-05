@@ -7,6 +7,8 @@ import actions from "../../redux/actions"
 import UserPosts from '../../Component/UserPosts';
 import { showMessage } from 'react-native-flash-message';
 import Header from '../../Component/Header';
+import WrapperContainer from '../../Component/WrapperContainer';
+import colors from '../../styles/colors';
 
 
 
@@ -60,17 +62,18 @@ import Header from '../../Component/Header';
         this.getUserPosts();
     }
 
-    //  OnNavigate=()=>{
-    //        const{navigation}=this.props;
-    //       navigation.navigate(navigationStrings.SEARCH)
-    //  }
-        
+   onOpenDrawer=()=>{
+       
+       const{navigation}=this.props;
+       navigation.openDrawer();
+   }
      render(){
          const{isLoading,userPosts}=this.state;
          return(
-             <View style={{flex:1}}>
-                 <Header headerText='Mar 2021'/>
-              <View style={{flex:1}}>
+             <WrapperContainer>
+             <View style={{flex:1}} >
+                 <Header headerText='Mar 2021' onClickMenuIcon={this.onOpenDrawer}/>
+              <View style={{flex:1}} >
               <FlatList
                     data={userPosts}
                     numColumns={2}
@@ -83,6 +86,7 @@ import Header from '../../Component/Header';
                 /> 
               </View>
              </View>
+             </WrapperContainer>
          )
      }
  }

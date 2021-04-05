@@ -3,6 +3,7 @@ import { View, Text, TextInput, FlatList } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
 import Loader from '../../Component/Loader';
 import UserPosts from '../../Component/UserPosts';
+import WrapperContainer from '../../Component/WrapperContainer';
 import strings from '../../constants/lang/en';
 import actions from '../../redux/actions';
 
@@ -52,6 +53,7 @@ import actions from '../../redux/actions';
      render(){
          const{userPosts,isLoading}=this.state;
          return(
+             <WrapperContainer>
             <View style={{flex:1}}>
                <TextInput placeholder={strings.SEARCH_HERE} onChangeText={this._onChangeText}/>
                <View style={{flex:1}}>
@@ -69,6 +71,7 @@ import actions from '../../redux/actions';
                     />
                 </View>
             </View>
+            </WrapperContainer>
          )
      }
  }

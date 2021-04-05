@@ -4,6 +4,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 
 import navigationStrings from "../constants/navigationStrings";
 import TabRoutes from "./TabRoutes";
+import DrawerRoutes from "./DrawerRoutes";
 
 
 
@@ -14,17 +15,12 @@ export default function MainStack(){
 
     return(
         <React.Fragment>
-             
-                   <Stack.Screen name={navigationStrings.TAB_ROUTES} component={TabRoutes}
+              
+           
+                 <Stack.Screen name={navigationStrings.DRAWER_ROUTES} component={DrawerRoutes}
                    options={{
                        headerShown:false
-                   }}/>    
-                     {/* <Stack.Screen name={navigationStrings.HOME} component={Home} options={{
-                headerShown:false}} ></Stack.Screen>
-
-<Stack.Screen name={navigationStrings.SEARCH_POSTS} component={SearchPosts} options={{
-                headerShown:false}} ></Stack.Screen> */}
-
+                   }}/>
         </React.Fragment>
     )
 
