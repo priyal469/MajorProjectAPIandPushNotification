@@ -6,6 +6,7 @@ import Loader from '../../Component/Loader';
 import actions from "../../redux/actions"
 import UserPosts from '../../Component/UserPosts';
 import { showMessage } from 'react-native-flash-message';
+import Header from '../../Component/Header';
 
 
 
@@ -68,6 +69,7 @@ import { showMessage } from 'react-native-flash-message';
          const{isLoading,userPosts}=this.state;
          return(
              <View style={{flex:1}}>
+                 <Header headerText='Mar 2021'/>
               <View style={{flex:1}}>
               <FlatList
                     data={userPosts}

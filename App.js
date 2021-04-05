@@ -12,6 +12,7 @@ import requestUserPermission from './src/utils/notificationServices';
 
 
 
+
 const {dispatch}=store
 
 export default class App extends Component {
@@ -22,7 +23,9 @@ export default class App extends Component {
     }
   }
 componentDidMount(){
-  requestUserPermission();
+  
+ requestUserPermission();
+  
   getUserData().then(userData=>{
     // setTimeout(()=>{
     //   SplashScreen.hide()

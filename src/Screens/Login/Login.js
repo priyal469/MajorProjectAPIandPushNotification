@@ -12,6 +12,13 @@ import Loader from '../../Component/Loader';
 import validator from '../../utils/validation';
 import { showMessage } from 'react-native-flash-message';
 import actions from '../../redux/actions';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import {
+    GoogleSignin,
+    GoogleSigninButton,
+    statusCodes,
+  } from '@react-native-google-signin/google-signin';
+  GoogleSignin.configure();
 
  export default class Login extends Component{
      constructor(props){
@@ -91,6 +98,24 @@ import actions from '../../redux/actions';
         }
     };
 
+    signIn = async () => {
+        try {
+          await GoogleSignin.hasPlayServices();
+          const userInfo = await GoogleSignin.signIn();
+        alert(JSON.stringify( userInfo) );
+        } catch (error) {
+          if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+            // user cancelled the login flow
+          } else if (error.code === statusCodes.IN_PROGRESS) {
+            // operation (e.g. sign in) is in progress already
+          } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+            // play services not available or outdated
+          } else {
+            // some other error happened
+          }
+        }
+      };
+
      render(){
          const{isLoading}=this.state;
          return(
@@ -104,6 +129,31 @@ import actions from '../../redux/actions';
             <BorderTextInput placeholder={strings.ENTER_YOUR_NUMBER} _onChangeText={this._onChangeText} inputKey={'phoneNumber'} />
             <SimpleBtn simpleBtn_Text={strings.GET_OTP} onPresSimpleBtn={this._onSendOtp} />
            <Loader isLoading={isLoading}/>
+
+           <GoogleSigninButton
+    style={{ width: 310, height: 54 }}
+    size={GoogleSigninButton.Size.Wide}
+    color={GoogleSigninButton.Color.Light}
+    onPress={this.signIn}
+    disabled={this.state.isSigninInProgress} />
+    
+    <LoginButton
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                console.log("login has error: " + result.error);
+              } else if (result.isCancelled) {
+                console.log("login is cancelled.");
+              } else {
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    console.log(data.accessToken.toString())
+                  }
+                )
+              }
+            }
+          }
+          onLogoutFinished={() => console.log("logout.")}/>
         </View>
          )
      }

@@ -58,7 +58,7 @@ import actions from '../../redux/actions';
                     <FlatList
                         data={userPosts}
                         numColumns={2}
-                        ListHeaderComponent={() => <View style={{ height: 30 }}><Loader isLoading={isLoading}/></View>}
+                        ListHeaderComponent={() => <View style={{ height: 30 }}><Loader isLoading={isLoading} /></View>}
                         keyExtractor={(item, index) => index.toString()}
                         ItemSeparatorComponent={() => <View style={{ height: 15 }}></View>}
                         renderItem={({ item }) => <UserPosts data={item}/>}

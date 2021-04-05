@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ProjectAPI</string>
+    <string name="server_client_id">919041631117-kthd9qhiopdnpdhssu5ki5a9h3q1savt.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">3769991943037364</string>
 </resources>
